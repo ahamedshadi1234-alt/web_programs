@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Validation Form</title>
+<style>             
+body {
+  background-color: green; /* blue */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-image: linear-gradient(to right, #ece9e6, #ffffff); /* subtle gradient background */
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  background-color:grey;
+  padding: 30px;
+  max-width: 500px;
+  margin: 40px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+div {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+label {
+  width: 140px;
+  font-size: 15px;
+  text-align: right;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+input {
+  padding: 8px;
+  width: 100%;
+  max-width: 300px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #007BFF; /* Bootstrap blue */
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  border-color: #0056b3;
+  outline: none;
+}
+
+button {
+  width: 120px;
+  padding: 12px;
+  font-size: 18px;
+  background-color: #66cccc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+  margin: 20px auto 0 auto;
+}
+
+button:hover {
+  background-color: #55bbbb;
+}
+</style>
+<script>
+function validate() {
+  var name = document.getElementById("nam").value.trim();
+  var passwd = document.getElementById("pwd").value;
+  var phone = document.getElementById("pno").value.trim();
+
+  if (name === "") {
+    alert('Name cannot be blank');
+    return false;
+  } else if (!/^[A-Za-z\s]+$/.test(name)) {
+    alert('Name requires only alphabets and spaces!');
+    return false;
+  } else if (passwd === "") {
+    alert('Enter a Password');
+    return false;
+  } else if (passwd.length < 8) {
+    alert('Password requires at least 8 characters');
+    return false;
+  } else if (phone === "") {
+    alert('Enter your phone number!');
+    return false;
+  } else if (!/^\d{10}$/.test(phone)) {
+    alert('Invalid Phone Number! Must be exactly 10 digits.');
+    return false;
+  } else {
+    alert('Thank You for Registration');
+    return true;
+  }
+}
+</script>
+</head>
+<body>
+<h2>Validation Form</h2>
+<form onsubmit="return validate()">
+  <div>
+    <label for="nam">Name</label>
+    <input type="text" id="nam" name="name" required>
+  </div>
+  <div>
+    <label for="pwd">Password</label>
+    <input type="password" id="pwd" name="password" required>
+  </div>
+  <div>
+    <label for="pno">Phone Number</label>
+    <input type="text"  
+           id="pno" 
+           name="phone"  
+           required>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>
